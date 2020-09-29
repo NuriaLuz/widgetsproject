@@ -18,25 +18,39 @@ const Search = () => {
             })
             setResults(data.query.search)
         };
-        if (term) {
+
+        //if this is the first search, load immediately 
+        if (term && !results.length) {
             search()
-        } //if the user doesn't put anything to search, then don't invoke the search function
-    }, [term])
+        } else {
+            const timeoutId = setTimeout(() => {
+                if (term) {
+                    search()
+                }
+            }, 500);
+
+            return () => {
+                clearTimeout(timeoutId)
+            }; //clears out the request timing
+
+        };
+
+    }, [term , results.length])
 
     const renderedResults = results.map((result) => {
-        return(
+        return (
             <div className="item" key={result.pageid}>
-            <div className="right floated content">
-                <a 
-                href={`https://en.wikipedia.org?curid=${result.pageid}`}
-                className="ui button"> Go </a>
-            </div>
+                <div className="right floated content">
+                    <a
+                        href={`https://en.wikipedia.org?curid=${result.pageid}`}
+                        className="ui button"> Go </a>
+                </div>
                 <div className="content">
                     <div className="header">
                         {result.title}
                     </div>
 
-                <span dangerouslySetInnerHTML={{__html : result.snippet}}></span>
+                    <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
                 </div>
             </div>
 
@@ -53,7 +67,7 @@ const Search = () => {
                         value={term}
                         onChange={event => setTerm(event.target.value)}
                     />
-                </div>  
+                </div>
             </div>
             <div className="ui celled list">
                 {renderedResults}
