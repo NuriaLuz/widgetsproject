@@ -12,7 +12,7 @@ const Convert = ({ language, text }) => {
         return () => {
             clearTimeout(timerId)
         }
-    }, [text])
+    }, [text]) //this code avoids multiple request calls and give user a timer when typing
 
     useEffect(() => {
         const request = async () => {
