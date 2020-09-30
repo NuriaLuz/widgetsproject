@@ -4,16 +4,48 @@ import Dropdown from './Dropdown'
 
 const options = [
     {
-        label: "Afrikanns",
-        value: 'af'
-    },
-    {
         label: "Arabic",
         value: 'ar'
     },
     {
+        label: "Chinese",
+        value: 'zh-CN'
+    },
+    {
+        label: "Danish",
+        value: 'da'
+    },
+    {
+        label: "English",
+        value: 'en'
+    },
+    {
+        label: "French",
+        value: 'fr'
+    },
+    {
+        label: "German",
+        value: 'de'
+    },
+    {
         label: "Hindi",
         value: 'hi'
+    },
+    {
+        label: "Japanese",
+        value: 'ja'
+    },
+    {
+        label: "Korean",
+        value: 'ko'
+    },
+    {
+        label: "Portuguese",
+        value: 'pt'
+    },
+    {
+        label: "Spanish",
+        value: 'es'
     }
 ]
 
